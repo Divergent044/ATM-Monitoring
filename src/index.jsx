@@ -9,7 +9,8 @@ import rootReducer from "./reducer";
 
 import './defaultStyles.less';
 import Auth from './pages/Auth';
-import Institute from './pages/Institute';
+import Institute from './pages/Settings/Institute';
+import Groups from './pages/Settings/Groups';
 
 const store = createStore(rootReducer, devToolsEnhancer());
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Switch>
                 <Route path='/login' component={Auth} />
                 <Route path='/atm/monitoring/settings/institute' component={Institute}/>
+                <Route path='/atm/monitoring/settings/groups' component={Groups}/>
                 <Route render={() => <Redirect to='/login' />}/>
             </Switch>
         </BrowserRouter>

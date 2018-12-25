@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "description": "UBRR Zarechny",
+    "name": "Zarechny",
+    "atms": [],
+    "type": "ATM_MODEL",
+    "atmsNotInGroup": [],
+    "groupTypes": [
+      "FORECAST_REGION",
+      "ATM_MODEL",
+      "ENCASHMENT_PRICE"
+    ]
+  },
+  {
+    "id": 2,
+    "description": "UBRR Zagorod_Sever",
+    "name": "Zagorod_Sever",
+    "atms": [],
+    "type": "ATM_MODEL",
+    "atmsNotInGroup": [],
+    "groupTypes": [
+      "FORECAST_REGION",
+      "ATM_MODEL",
+      "ENCASHMENT_PRICE"
+    ]
+  },
+  {
+    "id": 3,
+    "description": "UBRR Zagorod_Ug",
+    "name": "Zagorod_Ug",
+    "atms": [],
+    "type": "ATM_MODEL",
+    "atmsNotInGroup": [],
+    "groupTypes": [
+      "FORECAST_REGION",
+      "ATM_MODEL",
+      "ENCASHMENT_PRICE"
+    ]
+  }
+]
