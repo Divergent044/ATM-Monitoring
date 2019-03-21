@@ -1,4 +1,4 @@
-# ![](https://www.dropbox.com/s/4mk1u5poer2zmqm/beeline.png?dl=0&raw=1) B2C Development  - Code Style Guidelines
+# Code Style Guidelines
 
 ## ![](https://www.dropbox.com/s/86k5iyc50cdtd3b/react.png?dl=0&raw=1) React/JSX
 
@@ -392,7 +392,7 @@ benefits: PropTypes.arrayOf(
 
 ---
 
-## ![](https://www.dropbox.com/s/5yvunjxkt0n20hz/postcss.png?dl=0&raw=1) PostCSS
+## LESS
 
 ### Оглавление
 
