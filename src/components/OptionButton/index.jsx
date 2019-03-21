@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import './style.less';
 
-const OptionButton = ({ clickAction, buttonText, disabled, className }) => (
+const OptionButton = ({ clickAction, buttonText, disabled = false, className }) => (
     <div
-        className={`button ${disabled && 'disabled'} ${className}`}
+        className={`button ${disabled ? 'disabled' : ''} ${className}`}
         onClick={disabled ?  () => {} : clickAction}
     >
         {buttonText}

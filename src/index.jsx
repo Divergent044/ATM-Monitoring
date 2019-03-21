@@ -11,6 +11,7 @@ import './defaultStyles.less';
 import Auth from './pages/Auth';
 import Institute from './pages/Settings/Institute';
 import Groups from './pages/Settings/Groups';
+import Monitoring from './pages/Monitoring';
 
 const store = createStore(rootReducer, devToolsEnhancer());
 ReactDOM.render(
@@ -20,6 +21,7 @@ ReactDOM.render(
                 <Route path='/login' component={Auth} />
                 <Route path='/atm/monitoring/settings/institute' component={Institute}/>
                 <Route path='/atm/monitoring/settings/groups' component={Groups}/>
+                <Route path='/atm/monitoring' component={Monitoring} />
                 <Route render={() => <Redirect to='/login' />}/>
             </Switch>
         </BrowserRouter>

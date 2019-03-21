@@ -1,20 +1,79 @@
-@import (reference) "../../../defaultStyles.less";
+@import (reference) "../../../../../defaultStyles.less";
+
+.group-atms-wrap {
+  width: 900px;
+  margin: 0 auto;
+}
 
 .label {
-  font: 17px "Officina Serif", serif;
+  font: 21px "Officina Serif", serif;
+  font-weight: bold;
 }
 
 .atms-wrap {
-  width: 700px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
+}
+
+.atms-selected,
+.atms-available {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.atms-available-table,
+.atms-selected-table {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: 17px "Officina Serif", serif;
+
+  & .row {
+
+    &:hover {
+      background: #f3eabe;
+      cursor: pointer;
+      transition: all .1s ease-in-out;
+    }
+
+    &.selected {
+      background: #b3d6ff;
+    }
+  }
+
+  & .cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & .head-cell:extend(.table .cell) {
+    background: #b3d6ff linear-gradient(to top, #e6f2ff, #b3d6ff);
+    font-size: 21px;
+    color: #193996;
+    border-top: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+  }
 }
 
 .atms-button-wrap {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
   align-self: center;
+  margin: 0 20px;
+  height: 220px;
+}
+
+.longer {
+  width: 300px;
+  margin-top: 30px;
 }

@@ -7,6 +7,7 @@ import './style.less';
 import AddPopup from "./containers/AddPopup";
 import EditPopup from "./containers/EditPopup";
 import RemovePopup from "./containers/RemovePopup";
+import GroupATMs from './containers/GroupATMs';
 import Header from "../../../components/Header";
 import OptionButton from "../../../components/OptionButton";
 
@@ -110,7 +111,7 @@ class Groups extends Component {
                         //resultAction={(index) => removeInstitute(institutes, index)}
                     />
                 )}
-                <Header />
+                <Header showBurger={true}/>
 
                 <table className="table-groups">
                     <thead>
@@ -154,6 +155,12 @@ class Groups extends Component {
                         className="groups-btn"
                     />
                 </div>
+                {selectRow && (
+                    <GroupATMs
+                        atms={groups[selectedRow].atms}
+                        atmsNotInGroup={groups[selectedRow].atmsNotInGroup}
+                    />
+                )}
             </Fragment>
         );
     }

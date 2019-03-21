@@ -14,11 +14,53 @@
   },
   {
     "id": 2,
-    "description": "UBRR Zagorod_Sever",
-    "name": "Zagorod_Sever",
-    "atms": [],
+    "description": "UBRR Ekaterinburg_Zapad",
+    "name": "Ekaterinburg_Zapad",
+    "atms": [
+      {
+        "id": 1120010,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Ekaterinburg, Serova"
+      },
+      {
+        "id": 1120015,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Ekaterinburg, Serova"
+      },
+      {
+        "id": 1120016,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Ekaterinburg, Serova"
+      },
+      {
+        "id": 1140011,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Ekaterinburg, 8 Marta"
+      }
+    ],
     "type": "ATM_MODEL",
-    "atmsNotInGroup": [],
+    "atmsNotInGroup": [
+      {
+        "id": 1180001,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Asbest, Lenina"
+      },
+      {
+        "id": 1290001,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Arti, Sovetskaya"
+      },
+      {
+        "id": 1610006,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Belgorod, Konevaya"
+      },
+      {
+        "id": 1190003,
+        "model": "ATM Model",
+        "fullAddress": "Sverdlovskaya obl., Bogdanovich, Sportivnaya"
+      }
+    ],
     "groupTypes": [
       "FORECAST_REGION",
       "ATM_MODEL",

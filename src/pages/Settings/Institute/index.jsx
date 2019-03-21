@@ -126,7 +126,7 @@ class Institute extends Component {
                         resultAction={(index) => removeInstitute(institutes, index)}
                     />
                 )}
-                <Header />
+                <Header showBurger={true}/>
                 <div className="button-wrap">
                     <OptionButton buttonText={optionButtonText.add} clickAction={this.toggleAddPopup} />
                     <OptionButton

@@ -70,7 +70,7 @@ export default class Auth extends Component {
     render() {
         return (
             <Fragment>
-                <Header/>
+                <Header showBurger={false} className="auth-header"/>
                 <div className="auth">
                     <h1>Cash Management</h1>
                     <form className="auth-form">
