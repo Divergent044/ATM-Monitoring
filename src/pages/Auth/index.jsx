@@ -1,41 +1,39 @@
 import React, {Component, Fragment} from 'react';
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import Ctx from 'src-components/Ctx';
 
-import axios from 'axios';
-import './style.less';
+import classNames from 'classnames/bind';
+import styles from'./style.less';
+const cx = classNames.bind(styles);
 
-export default class Auth extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            login: "",
-            password: "",
-            checkLogin: true,
-            nextUrl: ""
-        };
-        this.updateLogin = this.updateLogin.bind(this);
-        this.updatePassword = this.updatePassword.bind(this);
-        this.auth = this.auth.bind(this);
-    }
+class Auth extends Component {
+    state = {
+        login: "",
+        password: "",
+        checkLogin: true,
+        nextUrl: "",
+    };
 
-    updateLogin(e) {
+    updateLogin = (e) => {
         this.setState({
             login: e.target.value,
         });
-    }
+    };
 
-    updatePassword(e) {
+    updatePassword = (e) =>  {
         this.setState({
             password: e.target.value
         });
-    }
+    };
 
-    auth() {
+    auth = () => {
         this.setState({
             checkLogin: true
         });
+
         const { username, password } = this.state;
         const encodedData = btoa(username + ':' + password);
         axios({
@@ -64,46 +62,54 @@ export default class Auth extends Component {
                 }
             }
         });
-    }
+    };
 
 
     render() {
+        const { login, password, checkLogin, nextUrl } = this.state;
+
         return (
             <Fragment>
-                <Header showBurger={false} className="auth-header"/>
-                <div className="auth">
-                    <h1>Cash Management</h1>
-                    <form className="auth-form">
-                        <label htmlFor="login" className="auth-form__label">Login:</label>
+                <Header showBurger={false} className={cx('auth-header')} />
+                <div className={cx('auth')}>
+                    <h1>{Ctx.auth.heading}</h1>
+                    <form className={cx('auth-form')}>
+                        <label htmlFor="login" className={cx('auth-form__label')}>
+                            {Ctx.auth.login}
+                        </label>
                         <input
                             type="text"
                             id="login"
                             placeholder="Login"
-                            value={this.state.login}
-                            className="auth-form__input"
+                            value={login}
+                            className={cx('auth-form__input')}
                             onChange={this.updateLogin}
                         />
                         <br/><br/>
-                        <label htmlFor="password" className="auth-form__label">Password:</label>
+
+                        <label htmlFor="password" className="auth-form__label">
+                            {Ctx.auth.password}
+                        </label>
                         <input
                             type="password"
                             id="password"
                             placeholder="Password"
-                            value={this.state.password}
-                            className="auth-form__input"
+                            value={password}
+                            className={cx('auth-form__input')}
                             onChange={this.updatePassword}
                         />
-                        {!this.state.checkLogin && (
-                            <span className="auth-form__error">
-                            Incorrect Login/Password
+
+                        {!checkLogin && (
+                            <span className={cx('auth-form__error')}>
+                                {Ctx.auth.error}
                         </span>
                         )}
-                        <Link to={`/${this.state.nextUrl}`}>
+                        <Link to={`/${nextUrl}`}>
                             <input
                                 type="button"
                                 onClick={this.auth}
                                 value="Enter"
-                                className="auth-form-enter__button"
+                                className={cx('auth-form-enter__button')}
                             />
                         </Link>
                     </form>
@@ -112,3 +118,5 @@ export default class Auth extends Component {
         );
     }
 }
+
+export default Auth;

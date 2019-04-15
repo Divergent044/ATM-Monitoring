@@ -1,11 +1,13 @@
 @import (reference) "../../../defaultStyles.less";
 
 .table-groups {
+  margin: 50px auto 0;
+
+  width: 700px;
+
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 700px;
-  margin: 50px auto 0;
-  font: 17px "Officina Serif", serif;
+  font: @simple-font;
 
   & .row {
 
@@ -21,8 +23,9 @@
   }
 
   & .cell {
-    border: 1px solid #ccc;
     padding: 10px;
+
+    border: 1px solid #ccc;
     text-align: center;
     vertical-align: middle;
 
@@ -41,11 +44,12 @@
 }
 
 .button-wrap {
+  margin: 20px auto 70px;
+
   display: flex;
   flex-direction: row;
-  width: 700px;
-  margin: 20px auto 70px;
   justify-content: space-around;
+  width: 700px;
 }
 
 .groups-btn {

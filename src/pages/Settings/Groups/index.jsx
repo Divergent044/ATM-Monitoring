@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from "axios";
 import PropTypes from "prop-types";
 
-import './style.less';
 import AddPopup from "./containers/AddPopup";
 import EditPopup from "./containers/EditPopup";
 import RemovePopup from "./containers/RemovePopup";
@@ -16,12 +15,12 @@ import {fetchGroupsData} from './actions';
 
 import getGroups from '../../../testData/getGroups.json';
 
-class Groups extends Component {
-    static propTypes = {
-        fetchGroupsData: PropTypes.func,
-        groups: PropTypes.array
-    };
+import classNames from 'classnames/bind';
+import styles from './style.less';
+const cx = classNames.bind(styles);
 
+
+class Groups extends Component {
     state = {
         showAddPopup: false,
         showEditPopup: false,
@@ -72,6 +71,7 @@ class Groups extends Component {
             currentGroupId: instId
         });
     };
+
     render() {
         const { groups } = this.props;
         const {
@@ -113,11 +113,11 @@ class Groups extends Component {
                 )}
                 <Header showBurger={true}/>
 
-                <table className="table-groups">
+                <table className={cx('table-groups')}>
                     <thead>
-                    <tr className="row">
+                    <tr className={cx('row')}>
                         {groupsTableTitle.map((item, index) => (
-                            <th className="head-cell" key={index}>
+                            <th className={cx('head-cell')} key={index}>
                                 {item}
                             </th>
                         ))}
@@ -126,35 +126,36 @@ class Groups extends Component {
                     <tbody>
                     {groups.map((item, index) => (
                         <tr
-                            className={`row ${(index === selectedRow) ? 'selected' : ''}`}
+                            className={cx(`row ${(index === selectedRow) ? 'selected' : ''}`)}
                             key={index}
                             onClick={e => this.selectRow(e.target.tabIndex, item.id)}
                         >
-                            <td className="cell" tabIndex={index}>{item.name}</td>
-                            <td className="cell" tabIndex={index}>{item.description}</td>
+                            <td className={cx('cell')} tabIndex={index}>{item.name}</td>
+                            <td className={cx('cell')} tabIndex={index}>{item.description}</td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
-                <div className="button-wrap">
+                <div className={cx('button-wrap')}>
                     <OptionButton
                         buttonText={optionButtonText.addGroup}
                         clickAction={this.toggleAddPopup}
-                        className="groups-btn"
+                        className={cx('groups-btn')}
                     />
                     <OptionButton
                         clickAction={this.toggleEditPopup}
                         buttonText={optionButtonText.editGroup}
                         disabled={!selectRow}
-                        className="groups-btn"
+                        className={cx('groups-btn')}
                     />
                     <OptionButton
                         buttonText={optionButtonText.removeGroup}
                         disabled={!selectRow}
                         clickAction={this.toggleRemovePopup}
-                        className="groups-btn"
+                        className={cx('groups-btn')}
                     />
                 </div>
+
                 {selectRow && (
                     <GroupATMs
                         atms={groups[selectedRow].atms}
@@ -165,6 +166,11 @@ class Groups extends Component {
         );
     }
 }
+
+Groups.propTypes = {
+    fetchGroupsData: PropTypes.func,
+    groups: PropTypes.array
+};
 
 const mapStateToProps = (state) => ({
     groups: state.groupsReducer.groups

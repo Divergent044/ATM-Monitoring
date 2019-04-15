@@ -1,52 +1,60 @@
 @import (reference) "../../defaultStyles.less";
 
 .filter-block {
-  font: 17px "Officina Serif", serif;
-  width: 900px;
   margin: 50px auto 0;
+
+  width: 900px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
+  font: @simple-font;
 }
 
 .big {
-  width: 200px;
   margin: 0 20px;
+  width: 200px;
 }
 
 .text-input {
-  width: 150px;
-  font: 15px "Officina Serif", serif;
   padding: 5px;
   margin-top: 10px;
+
+  width: 150px;
+
+  font: 15px "PT Sans", serif;
   border-color: #ccc;
 }
 
 .hr-line {
+  margin: 50px auto 0;
+
   width: 900px;
   height: 15px;
+
   background: @blue;
-  margin: 50px auto 0;
 }
 
 .inner-menu {
+  margin: 50px auto 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   width: 85%;
   max-width: 1100px;
-  margin: 50px auto 0;
 }
 
 .tab {
   display: inline-block;
-  font: 17px "Officina Serif", serif;
-  color: #787878;
-  border-bottom: 2px solid #ccc;
   width: 150px;
   height: 40px;
+
+  font: @simple-font;
+  color: #787878;
+  border-bottom: 2px solid #ccc;
   text-align: center;
   line-height: 40px;
 
@@ -99,11 +107,12 @@
   }
 
   & .head-cell:extend(.table .cell) {
+    padding: 2px 5px;
+
     background: #b3d6ff linear-gradient(to top, #e6f2ff, #b3d6ff);
     font-size: 21px;
     color: #193996;
     border-top: none;
-    padding: 2px 5px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
   }
 }

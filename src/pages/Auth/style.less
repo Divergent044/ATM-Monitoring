@@ -1,13 +1,15 @@
 @import (reference) "../../defaultStyles.less";
 
 .auth {
-  font: 13px/20px "Officina Serif", serif;
-  color: #404040;
-  line-height: 1;
   position: relative;
   margin: 150px auto 0 auto;
   padding: 20px 20px 20px;
+
   width: 310px;
+
+  font: 13px/20px "PT Sans", serif;
+  color: #404040;
+  line-height: 1;
   background: white;
   border-radius: 7px;
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -15,23 +17,26 @@
 }
 
 .auth:before {
-  content: '';
   position: absolute;
   top: -8px;
   right: -8px;
   bottom: -8px;
   left: -8px;
   z-index: -1;
+
+  content: '';
   background: rgba(0, 0, 0, 0.08);
   border-radius: 7px;
 }
 
 .auth h1 {
   margin: -20px -20px 21px;
+
   line-height: 40px;
   font-size: 18px;
   font-weight: bold;
   color: #555;
+
   text-align: center;
   text-shadow: 0 1px white;
   background: #f3f3f3;
@@ -69,9 +74,11 @@
 }
 
 .auth-form__label {
-  display: inline-block;
   margin-bottom: 3px;
   margin-left: 5px;
+
+  display: inline-block;
+
   font-size: 17px;
   font-weight: bold;
   color: #555;
@@ -79,11 +86,13 @@
 }
 
 .auth-form__input {
-  font: 17px "Officina Serif", serif;
   margin: 5px;
   padding: 0 10px;
+
   width: 200px;
   height: 34px;
+
+  font: @simple-font;
   color: #404040;
   background: white;
   border: 1px solid;
@@ -108,20 +117,24 @@
 .auth-form__error {
   position: relative;
   left: -8px;
-  display: block;
-  color: #cc0000;
-  font: 18px "Officina Serif", serif;
   top: 25px;
+
+  display: block;
+
+  color: #cc0000;
+  font: @simple-font;
 }
 
 .auth-form-enter__button {
   margin-top: 15px;
   position: relative;
   right: -195px;
-  font: 17px "Officina Serif", serif;
   padding: 0 18px;
+
   width: 80px;
   height: 35px;
+
+  font: @simple-font;
   font-weight: bold;
   color: #527881;
   text-shadow: 0 1px #e3f1f1;

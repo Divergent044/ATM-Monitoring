@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './style.less';
+import classNames from 'classnames/bind';
+import styles from'./style.less';
+const cx = classNames.bind(styles);
 
 const OptionButton = ({ clickAction, buttonText, disabled = false, className }) => (
     <div
-        className={`button ${disabled ? 'disabled' : ''} ${className}`}
+        className={cx(`button ${disabled ? 'disabled' : ''}`, className)}
         onClick={disabled ?  () => {} : clickAction}
     >
         {buttonText}

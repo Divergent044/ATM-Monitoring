@@ -6,7 +6,7 @@ import OptionButton from '../../components/OptionButton';
 import './style.less';
 import {monitoringStatusTableTitle, monitoringBalanceTableTitle} from "../../assets/constants";
 
-export default class Monitoring extends PureComponent {
+class Monitoring extends PureComponent {
     state = {
         searchId: '',
         searchAddress: '',
@@ -234,3 +234,5 @@ export default class Monitoring extends PureComponent {
         );
     }
 }
+
+export default Monitoring;
