@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -7,10 +7,9 @@ import AddPopup from "./containers/AddPopup";
 import EditPopup from "./containers/EditPopup";
 import RemovePopup from "./containers/RemovePopup";
 import GroupATMs from './containers/GroupATMs';
-import Header from "../../../components/Header";
-import OptionButton from "../../../components/OptionButton";
+import OptionButton from 'src-components/OptionButton';
+import Ctx from 'src-components/Ctx';
 
-import {groupsTableTitle, optionButtonText} from "../../../assets/constants";
 import {fetchGroupsData} from './actions';
 
 import getGroups from '../../../testData/getGroups.json';
@@ -84,7 +83,7 @@ class Groups extends Component {
         } = this.state;
 
         return (
-            <Fragment>
+            <div>
                 {showAddPopup && (
                     <AddPopup
                         closePopup={this.toggleAddPopup}
@@ -111,12 +110,10 @@ class Groups extends Component {
                         //resultAction={(index) => removeInstitute(institutes, index)}
                     />
                 )}
-                <Header showBurger={true}/>
-
                 <table className={cx('table-groups')}>
                     <thead>
-                    <tr className={cx('row')}>
-                        {groupsTableTitle.map((item, index) => (
+                    <tr className={cx('row', 'row-head')}>
+                        {Ctx.groupATMs.mainTitles.map((item, index) => (
                             <th className={cx('head-cell')} key={index}>
                                 {item}
                             </th>
@@ -126,7 +123,7 @@ class Groups extends Component {
                     <tbody>
                     {groups.map((item, index) => (
                         <tr
-                            className={cx(`row ${(index === selectedRow) ? 'selected' : ''}`)}
+                            className={cx('row', `${(index === selectedRow) ? 'selected' : ''}`)}
                             key={index}
                             onClick={e => this.selectRow(e.target.tabIndex, item.id)}
                         >
@@ -138,18 +135,18 @@ class Groups extends Component {
                 </table>
                 <div className={cx('button-wrap')}>
                     <OptionButton
-                        buttonText={optionButtonText.addGroup}
+                        buttonText={Ctx.optionButtonText.addGroup}
                         clickAction={this.toggleAddPopup}
                         className={cx('groups-btn')}
                     />
                     <OptionButton
                         clickAction={this.toggleEditPopup}
-                        buttonText={optionButtonText.editGroup}
+                        buttonText={Ctx.optionButtonText.editGroup}
                         disabled={!selectRow}
                         className={cx('groups-btn')}
                     />
                     <OptionButton
-                        buttonText={optionButtonText.removeGroup}
+                        buttonText={Ctx.optionButtonText.removeGroup}
                         disabled={!selectRow}
                         clickAction={this.toggleRemovePopup}
                         className={cx('groups-btn')}
@@ -162,7 +159,7 @@ class Groups extends Component {
                         atmsNotInGroup={groups[selectedRow].atmsNotInGroup}
                     />
                 )}
-            </Fragment>
+            </div>
         );
     }
 }

@@ -3,31 +3,19 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import Header from '../../../components/Header/index';
-import OptionButton from '../../../components/OptionButton/index'
+import OptionButton from 'src-components/OptionButton'
+import Ctx from 'src-components/Ctx';
 import AddPopup from './containers/AddPopup/index';
 import EditPopup from './containers/EditPopup/index';
 import RemovePopup from './containers/RemovePopup/index';
-import { instituteTableTitle, optionButtonText} from '../../../assets/constants';
 
 import { fetchInstitutesData, createInstitute, changeInstitute, removeInstitute } from './actions';
 
-import './style.less';
+import className from 'classnames/bind';
+import styles from './style.less';
+const cx = className.bind(styles);
 
 class Institute extends Component {
-    static propTypes = {
-        fetchInstitutesData: PropTypes.func,
-        createInstitute: PropTypes.func,
-        changeInstitute: PropTypes.func,
-        removeInstitute: PropTypes.func,
-        institutes: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string,
-                description: PropTypes.string
-            })
-        )
-    };
-
     state = {
         showAddPopup: false,
         showEditPopup: false,
@@ -126,25 +114,25 @@ class Institute extends Component {
                         resultAction={(index) => removeInstitute(institutes, index)}
                     />
                 )}
-                <Header showBurger={true}/>
-                <div className="button-wrap">
-                    <OptionButton buttonText={optionButtonText.add} clickAction={this.toggleAddPopup} />
+
+                <div className={cx('button-wrap')}>
+                    <OptionButton buttonText={Ctx.optionButtonText.add} clickAction={this.toggleAddPopup} />
                     <OptionButton
                         clickAction={this.toggleEditPopup}
-                        buttonText={optionButtonText.edit}
+                        buttonText={Ctx.optionButtonText.edit}
                         disabled={!selectRow}
                     />
                     <OptionButton
-                        buttonText={optionButtonText.remove}
+                        buttonText={Ctx.optionButtonText.remove}
                         disabled={!selectRow}
                         clickAction={this.toggleRemovePopup}
                     />
                 </div>
-                <table className="table">
+                <table className={cx('table')}>
                     <thead>
-                        <tr className="row">
-                            {instituteTableTitle.map((item, index) => (
-                                <th className="head-cell" key={index}>
+                        <tr className={cx('row', 'row-head')}>
+                            {Ctx.institutes.title.map((item, index) => (
+                                <th className={cx('head-cell')} key={index}>
                                     {item}
                                 </th>
                             ))}
@@ -153,12 +141,16 @@ class Institute extends Component {
                     <tbody>
                         {institutes.map((item, index) => (
                             <tr
-                                className={`row ${(index === selectedRow) ? 'selected' : ''}`}
+                                className={cx('row', index === selectedRow ? 'selected' : '')}
                                 key={index}
                                 onClick={e => this.selectRow(e.target.tabIndex, item.id)}
                             >
-                                <td className="cell" tabIndex={index}>{item.id}</td>
-                                <td className="cell" tabIndex={index}>{item.description}</td>
+                                <td className={cx('cell')} tabIndex={index}>
+                                    {item.id}
+                                </td>
+                                <td className={cx('cell')} tabIndex={index}>
+                                    {item.description}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -167,6 +159,19 @@ class Institute extends Component {
         );
     }
 }
+
+Institute.propTypes = {
+    fetchInstitutesData: PropTypes.func,
+    createInstitute: PropTypes.func,
+    changeInstitute: PropTypes.func,
+    removeInstitute: PropTypes.func,
+    institutes: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            description: PropTypes.string
+        })
+    )
+};
 
 const mapStateToProps = (state) => ({
     institutes: state.institutesReducer.institutes

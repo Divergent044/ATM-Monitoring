@@ -1,49 +1,32 @@
 @import (reference) "../../defaultStyles.less";
 
-.wrap-menu {
-  position: fixed;
-  padding: 44px;
-  z-index: 999;
-
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-
-  background: @backgroundPopup;
-}
-
 .menu-content {
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  padding: 40px 20px;
+  padding: 10px 20px 20px;
 
-  width: 400px;
+  width: 200px;
   height: 100%;
 
   font-family: "PT Sans", serif;
-  background: #fff;
-
-  animation: menuAnimate .5s ease-in-out;
+  background: @blue;
 }
 
 .title {
   font-size: 35px;
   text-align: center;
+  color: #fff;
 }
 
 .line {
-  width: 90%;
-  color: #e6e6e6;
+  color: #fff;
 }
 
 .settings,
 .monitoring {
-  margin-top: 30px;
+  margin-top: 20px;
 
   font-weight: bold;
   font-size: 21px;
+  color: #fff;
 }
 
 .link {
@@ -51,28 +34,36 @@
 }
 
 .settings-item {
-  margin: 20px 0 20px 20px;
-  padding: 5px;
+  padding: 15px 0 5px 15px;
 
   height: 30px;
-  width: 50%;
+  width: 100%;
 
   line-height: 30px;
   font-weight: normal;
   font: @simple-font;
-  color: @black;
+  color: @lightBlue;
 
   &:hover {
-    border: 1px solid @blue;
-    border-radius: 10px;
     color: @blue;
-    font-weight: bold;
+    background-color: @lightBlue;
+  }
+
+  &:active {
+    background-color: @blue;
   }
 }
 
 .menu-logout {
   width: 80%;
   margin: 100px auto;
+
+  background-color: #f66262;
+
+  &:hover {
+    background-color: red;
+    color: #fff;
+  }
 }
 
 

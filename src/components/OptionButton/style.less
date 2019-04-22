@@ -5,17 +5,16 @@
   height: 40px;
 
   font: @simple-font;
-  color: #193996;
-  border-radius: 15px;
-  background: #b3d6ff linear-gradient(to top, #e6f2ff, #b3d6ff);
+  color: #fff;
+  background-color: @blue;
   text-align: center;
   line-height: 40px;
   box-shadow: 0 2px 4px #282828;
 
   &:hover, &:focus {
     outline: none;
-    background: #b3d6ff linear-gradient(to bottom, #e6f2ff, #b3d6ff);
     cursor: pointer;
+    color: @lightBlue;
   }
 
   &:active {
@@ -27,7 +26,6 @@
     box-shadow: none;
     border: 2px solid #ccc;
     color: #cccc;
-    border-radius: 30px;
 
     &:hover {
       cursor: not-allowed;

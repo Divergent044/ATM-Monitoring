@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import {removeGroupPopup, optionButtonText} from "../../../../../assets/constants";
-import OptionButton from '../../../../../components/OptionButton/index';
+import OptionButton from 'src-components/OptionButton';
+import Ctx from 'src-components/Ctx';
 
-import './style.less';
+import className from 'classnames/bind';
+import styles from './style.less';
+const cx = className.bind(styles);
 
 const RemovePopup = ({ closePopup, resultAction, id, groupName, index }) => {
-    const {titleBeforeId, titleAfterId} = removeGroupPopup;
+    const {titleBeforeId, titleAfterId} = Ctx.groupATMs.popupContent.removeGroupPopup;
 
     const removeInstitute = () => {
 
@@ -24,21 +26,21 @@ const RemovePopup = ({ closePopup, resultAction, id, groupName, index }) => {
     };
 
     return (
-        <div className="wrap-remove-popup">
-            <div className="remove-popup">
-                <div className="remove-popup-form">
-                    <span className="close" onClick={closePopup}>+</span>
-                    <div className="remove-popup__content">
-                        <h1 className="title">
+        <div className={cx('wrap-remove-popup')}>
+            <div className={cx('remove-popup')}>
+                <div className={cx('remove-popup-form')}>
+                    <span className={cx('close')} onClick={closePopup}>+</span>
+                    <div className={cx('remove-popup__content')}>
+                        <h1 className={cx('title')}>
                             {`${titleBeforeId} ${groupName} ${titleAfterId}`}
                         </h1>
 
-                        <div className="remove-popup-button">
+                        <div className={cx('remove-popup-button')}>
                             <OptionButton
-                                buttonText={optionButtonText.ok}
+                                buttonText={Ctx.optionButtonText.ok}
                                 clickAction={removeInstitute}
                             />
-                            <OptionButton buttonText={optionButtonText.cancel} clickAction={closePopup}/>
+                            <OptionButton buttonText={Ctx.optionButtonText.cancel} clickAction={closePopup}/>
                         </div>
                     </div>
                 </div>
@@ -46,8 +48,6 @@ const RemovePopup = ({ closePopup, resultAction, id, groupName, index }) => {
         </div>
     );
 };
-
-RemovePopup.componentName = 'RemovePopup';
 
 RemovePopup.propTypes = {
     closePopup: PropTypes.func,

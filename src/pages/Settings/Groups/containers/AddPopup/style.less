@@ -7,13 +7,14 @@
 
 .add-popup {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 44px;
   z-index: 999;
 
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
-
   background: @backgroundPopup;
 }
 
@@ -32,7 +33,7 @@
 
 .close {
   position: absolute;
-  right: 50px;
+  right: 70px;
   transform: rotate(45deg) translateY(-50px);
 
   color: @black;
@@ -54,7 +55,7 @@
 }
 
 .form {
-  margin: 90px auto 0;
+  margin: 50px auto 0;
 
   max-width: 500px;
   width: 65%;
@@ -84,6 +85,17 @@
   .form-item();
   margin: 50px auto 0;
   width: 60%;
+}
+
+@keyframes popupAnimate {
+  from {
+    opacity: 0;
+    top: -300px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
 }
 
 

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import {addGroupPopup} from "../../../../../assets/constants";
 import OptionButton from 'src-components/OptionButton';
 import Ctx from 'src-components/Ctx';
 
@@ -45,7 +44,7 @@ class AddPopup extends Component {
     };
 
     render() {
-        const {title, idLabel, descriptionLabel} = addGroupPopup;
+        const {title, idLabel, descriptionLabel} = Ctx.groupATMs.popupContent.addGroupPopup;
         const {closePopup} = this.props;
         const { name, description } = this.state;
 

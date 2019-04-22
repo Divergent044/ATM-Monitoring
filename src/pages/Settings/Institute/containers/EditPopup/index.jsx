@@ -2,19 +2,14 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import {editInstitutePopup, optionButtonText} from "../../../../../assets/constants";
-import OptionButton from '../../../../../components/OptionButton/index';
+import OptionButton from 'src-components/OptionButton';
+import Ctx from 'src-components/Ctx';
 
-import './style.less';
+import className from 'classnames/bind';
+import styles from './style.less';
+const cx = className.bind(styles);
 
-export default class EditPopup extends Component {
-    static propTypes = {
-        closePopup: PropTypes.func,
-        resultAction: PropTypes.func,
-        id: PropTypes.string,
-        index: PropTypes.number
-    };
-
+class EditPopup extends Component {
     state = {
         description: ''
     };
@@ -42,35 +37,35 @@ export default class EditPopup extends Component {
     };
 
     render() {
-        const {title, idLabel, descriptionLabel} = editInstitutePopup;
+        const {title, idLabel, descriptionLabel} = Ctx.institutes.popupContent.editInstitutePopup;
         const { closePopup, id } = this.props;
         const { description } = this.state;
 
         return (
-            <div className="wrap-popup">
-                <div className="add-popup">
-                    <div className="popup-form">
-                        <span className="close" onClick={closePopup}>+</span>
-                        <div className="add-popup__content">
-                            <h1 className="title">
+            <div className={cx('wrap-popup')}>
+                <div className={cx('add-popup')}>
+                    <div className={cx('popup-form')}>
+                        <span className={cx('close')} onClick={closePopup}>+</span>
+                        <div className={cx('add-popup__content')}>
+                            <h1 className={cx('title')}>
                                 {title}
                             </h1>
-                            <div className="form">
-                                <div className="form-item">
-                                    <label htmlFor="id" className="label disabled">
+                            <div className={cx('form')}>
+                                <div className={cx('form-item')}>
+                                    <label htmlFor="id" className={cx('label', 'disabled')}>
                                         {idLabel}
                                     </label>
                                     <input
                                         type="text"
                                         id="id"
                                         value={id}
-                                        className="input"
+                                        className={cx('input')}
                                         disabled
                                     />
                                 </div>
 
-                                <div className="form-item">
-                                    <label htmlFor="description" className="label">
+                                <div className={cx('form-item')}>
+                                    <label htmlFor="description" className={cx('label')}>
                                         {descriptionLabel}
                                     </label>
                                     <input
@@ -78,18 +73,18 @@ export default class EditPopup extends Component {
                                         id="description"
                                         placeholder={descriptionLabel}
                                         value={this.state.description}
-                                        className="input"
+                                        className={cx('input')}
                                         onChange={this.updateDescription}
                                     />
                                 </div>
 
-                                <div className="form-button">
+                                <div className={cx('form-button')}>
                                     <OptionButton
-                                        buttonText={optionButtonText.save}
+                                        buttonText={Ctx.optionButtonText.save}
                                         disabled={!description}
                                         clickAction={this.editInstitute}
                                     />
-                                    <OptionButton buttonText={optionButtonText.cancel} clickAction={closePopup}/>
+                                    <OptionButton buttonText={Ctx.optionButtonText.cancel} clickAction={closePopup}/>
                                 </div>
                             </div>
                         </div>
@@ -99,3 +94,12 @@ export default class EditPopup extends Component {
         );
     }
 }
+
+EditPopup.propTypes = {
+    closePopup: PropTypes.func,
+    resultAction: PropTypes.func,
+    id: PropTypes.string,
+    index: PropTypes.number
+};
+
+export default EditPopup;

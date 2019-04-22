@@ -6,7 +6,7 @@
 }
 
 .label {
-  font: 21px "Officina Serif", serif;
+  font: 21px "PT Sans", serif;
   font-weight: bold;
 }
 
@@ -29,24 +29,32 @@
 .atms-selected-table {
   border: 1px solid #ccc;
   border-radius: 6px;
-  font: 17px "Officina Serif", serif;
+  border-collapse: collapse;
+  font: @simple-font;
 
   & .row {
 
     &:hover {
-      background: #f3eabe;
+      background: @lightGrey;
       cursor: pointer;
       transition: all .1s ease-in-out;
+
+      &.row-head {
+        cursor: default;
+        background-color: transparent;
+      }
     }
 
     &.selected {
-      background: #b3d6ff;
+      background: @lightBlue;
+      color: @blue;
     }
   }
 
   & .cell {
-    border: 1px solid #ccc;
     padding: 10px;
+
+    border: 1px solid #ccc;
     text-align: center;
     vertical-align: middle;
 
@@ -56,11 +64,10 @@
   }
 
   & .head-cell:extend(.table .cell) {
-    background: #b3d6ff linear-gradient(to top, #e6f2ff, #b3d6ff);
+    padding: 10px;
     font-size: 21px;
-    color: #193996;
+    color: @blue;
     border-top: none;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
   }
 }
 
