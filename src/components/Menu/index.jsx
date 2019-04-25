@@ -20,7 +20,9 @@ const Menu = () => (
             className={cx('line')}
         />
         <div className={cx('monitoring')}>
-            {Ctx.menu.monitoring}
+            <Link to="/atm/monitoring" className={cx('link')}>
+                {Ctx.menu.monitoring}
+            </Link>
         </div>
         <div className={cx('settings')}>
             {Ctx.menu.settings.settings}

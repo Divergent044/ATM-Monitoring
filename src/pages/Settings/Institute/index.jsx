@@ -11,6 +11,8 @@ import RemovePopup from './containers/RemovePopup/index';
 
 import { fetchInstitutesData, createInstitute, changeInstitute, removeInstitute } from './actions';
 
+import getInst from '../../../testData/getInstitutes.json';
+
 import className from 'classnames/bind';
 import styles from './style.less';
 const cx = className.bind(styles);
@@ -27,12 +29,14 @@ class Institute extends Component {
 
     componentWillMount() {
         document.title = `${document.title} - Institute` ;
-        axios({
+        /*axios({
             method: 'GET',
             url: 'http://localhost:8080/institutes'
         }).then((response) => {
             this.props.fetchInstitutesData(response.data);
-        })
+        })*/
+
+        this.props.fetchInstitutesData(getInst);
     }
 
     toggleAddPopup = () => this.setState({
