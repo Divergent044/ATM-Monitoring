@@ -46,11 +46,10 @@ class Auth extends Component {
             }
         }).then(() => {
             this.setState({
-                nextUrl: "monitoring"
+                nextUrl: 'atm/monitoring'
             });
         }).catch(error => {
             if (error.response) {
-                console.log(error.response.status);
                 if (error.response.status === 401) {
                     this.setState({
                         checkLogin: false

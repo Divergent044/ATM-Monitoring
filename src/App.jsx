@@ -5,10 +5,10 @@ import Header from 'src-components/Header';
 import Auth from "./pages/Auth";
 import MonitoringRouting from "./pages/MonitoringRouting";
 
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import styles from './defaultStyles.less';
 
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 const App = () => (
     <Fragment>

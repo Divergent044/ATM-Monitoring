@@ -5,9 +5,9 @@ import axios from 'axios';
 import OptionButton from 'src-components/OptionButton';
 import Ctx from 'src-components/Ctx';
 
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import styles from './style.less';
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 class EditPopup extends Component {
     state = {

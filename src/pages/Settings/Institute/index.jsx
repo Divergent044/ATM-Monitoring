@@ -13,9 +13,9 @@ import { fetchInstitutesData, createInstitute, changeInstitute, removeInstitute 
 
 import getInst from '../../../testData/getInstitutes.json';
 
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import styles from './style.less';
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 class Institute extends Component {
     state = {

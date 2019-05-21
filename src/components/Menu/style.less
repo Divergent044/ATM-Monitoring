@@ -2,6 +2,7 @@
 
 .menu-content {
   padding: 10px 20px 20px;
+  box-sizing: border-box;
 
   width: 200px;
 
@@ -36,12 +37,13 @@
 }
 
 .settings-item {
-  padding: 15px 0 5px 15px;
+  padding: 5px 0 5px 5px;
 
-  height: 30px;
+  display: flex;
+  align-items: center;
+  height: 40px;
   width: 100%;
 
-  line-height: 30px;
   font-weight: normal;
   font: @simple-font;
   color: @lightBlue;
