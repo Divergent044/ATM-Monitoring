@@ -1,129 +1,538 @@
-{
-  "status": [
-    [
-      "1180001",
-      "ATM Model",
-      "Test atm-1",
-      "Open",
-      "-",
-      [98, 25, 65, 89],
-      "1500000",
-      "34567",
-      "98763",
-      "70%",
-      "80%",
-      "+",
-      "10",
-      "10",
-      "5",
-      "5",
-      "+"
-    ],
-    [
-      "1290001",
-      "ATM Model",
-      "Test atm-2",
-      "Close",
-      "-",
-      [98, 25, 65, 89],
-      "1500000",
-      "34567",
-      "98763",
-      "70%",
-      "80%",
-      "+",
-      "10",
-      "10",
-      "5",
-      "5",
-      "+"
-    ],
-    [
-      "1300001",
-      "ATM Model",
-      "Test atm-3",
-      "Open",
-      "-",
-      [98, 25, 65, 89],
-      "1500000",
-      "34567",
-      "98763",
-      "70%",
-      "80%",
-      "+",
-      "10",
-      "10",
-      "5",
-      "5",
-      "+"
-    ]
-  ],
-  "balance": [
-  [
-    "1180001",
-    "Test atm-1",
-    "98%-50%-65%-89%",
-    "310000rur",
-    "310",
-    "280000rur",
-    "280",
-    "430000rur",
-    "430",
-    "110000rur",
-    "110",
-    "213456",
-    "32456",
-    "234567",
-    "17",
-    "10.12.18",
-    "17.12.18",
-    "1000000",
-    "78%",
-    "+"
-  ],
-  [
-    "1180001",
-    "Test atm-2",
-    "98%-50%-65%-89%",
-    "310000rur",
-    "310",
-    "280000rur",
-    "280",
-    "430000rur",
-    "430",
-    "110000rur",
-    "110",
-    "213456",
-    "32456",
-    "234567",
-    "17",
-    "10.12.18",
-    "17.12.18",
-    "1000000",
-    "78%",
-    "+"
-  ],
-  [
-    "1180001",
-    "Test atm-3",
-    "98%-50%-65%-89%",
-    "310000rur",
-    "310",
-    "280000rur",
-    "280",
-    "430000rur",
-    "430",
-    "110000rur",
-    "110",
-    "213456",
-    "32456",
-    "234567",
-    "17",
-    "10.12.18",
-    "17.12.18",
-    "1000000",
-    "78%",
-    "+"
-  ]
+[
+  {
+    "model": "model A1 atm 1",
+    "address": "addr test atm 1",
+    "atmName": "ATM #1",
+    "extAtmId": "atm1",
+    "atmState": {
+      "encashment": {
+        "encashmentPlannedDate": "10-05-2019",
+        "lastEncashmentDate": "14-04-2019",
+        "encashmentSumm": 102012.2,
+        "express": false
+      },
+      "cashInCassette": {
+        "cassRemaining": 1238,
+        "cassUploaded": 6765,
+        "forthcomingDate": "08-05-2019"
+      },
+      "cashOutCassettes": [
+        {
+          "denomination": 100,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 978,
+            "currencyCode": "EUR",
+            "description": "EURO"
+          },
+          "cassNumber": 1,
+          "cassRemaining": 1200,
+          "cassUploaded": 2312,
+          "notesCount": 5,
+          "exhaustionDate": "16-05-2019",
+          "demandValue": 7
+        },
+        {
+          "denomination": 20,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 810,
+            "currencyCode": "RUR",
+            "description": "RUBLE"
+          },
+          "cassNumber": 4,
+          "cassRemaining": 12321,
+          "cassUploaded": 232,
+          "notesCount": 2,
+          "exhaustionDate": "09-05-2019",
+          "demandValue": 120
+        },
+        {
+          "denomination": 100,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 810,
+            "currencyCode": "RUR",
+            "description": "RUBLE"
+          },
+          "cassNumber": 2,
+          "cassRemaining": 1220,
+          "cassUploaded": 5665,
+          "notesCount": 7,
+          "exhaustionDate": "04-05-2019",
+          "demandValue": 120
+        },
+        {
+          "denomination": 10,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 840,
+            "currencyCode": "USD",
+            "description": "USD"
+          },
+          "cassNumber": 3,
+          "cassRemaining": 663,
+          "cassUploaded": 1231,
+          "notesCount": 2,
+          "exhaustionDate": "16-06-2019",
+          "demandValue": 23
+        }
+      ],
+      "cashInRecyclingCassettes": [
+        {
+          "cassNumber": 1,
+          "cassRemaining": 675,
+          "cassUploaded": 6760
+        },
+        {
+          "cassNumber": 2,
+          "cassRemaining": 123,
+          "cassUploaded": 8998
+        }
+      ],
+      "transactionsByHourStatistics": [
+        {
+          "hour": 0,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 1,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 2,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 3,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 4,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 5,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 6,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 7,
+          "transactionsCount": 6
+        },
+        {
+          "hour": 8,
+          "transactionsCount": 12
+        },
+        {
+          "hour": 9,
+          "transactionsCount": 30
+        },
+        {
+          "hour": 10,
+          "transactionsCount": 10
+        },
+        {
+          "hour": 11,
+          "transactionsCount": 32
+        },
+        {
+          "hour": 12,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 13,
+          "transactionsCount": 20
+        },
+        {
+          "hour": 14,
+          "transactionsCount": 40
+        },
+        {
+          "hour": 15,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 16,
+          "transactionsCount": 232
+        },
+        {
+          "hour": 17,
+          "transactionsCount": 18
+        },
+        {
+          "hour": 18,
+          "transactionsCount": 2
+        },
+        {
+          "hour": 19,
+          "transactionsCount": 34
+        },
+        {
+          "hour": 20,
+          "transactionsCount": 54
+        },
+        {
+          "hour": 21,
+          "transactionsCount": 16
+        },
+        {
+          "hour": 22,
+          "transactionsCount": 3
+        },
+        {
+          "hour": 23,
+          "transactionsCount": 1
+        }
+      ],
+      "state": "OPENED",
+      "malfunction": "CARD_READER",
+      "statDate": "20-04-2019 05:00:00",
+      "avgTransactionsInDay": 101,
+      "dateToCurrencyEnd": 7,
+      "incidentExists": true,
+      "lastCashOutHours": -380,
+      "lastCashInHours": -404
+    }
+  },
+  {
+    "model": "model A1 atm 3",
+    "address": "addr test atm 3",
+    "atmName": "ATM #3",
+    "extAtmId": "atm3",
+    "atmState": {
+      "encashment": {
+        "encashmentPlannedDate": "12-05-2019",
+        "lastEncashmentDate": "15-04-2019",
+        "encashmentSumm": 234324.5,
+        "express": true
+      },
+      "cashInCassette": {
+        "cassRemaining": 1238,
+        "cassUploaded": 6765,
+        "forthcomingDate": "08-05-2019"
+      },
+      "cashOutCassettes": [],
+      "cashInRecyclingCassettes": [
+        {
+          "cassNumber": 1,
+          "cassRemaining": 675,
+          "cassUploaded": 6760
+        },
+        {
+          "cassNumber": 2,
+          "cassRemaining": 123,
+          "cassUploaded": 8998
+        }
+      ],
+      "transactionsByHourStatistics": [
+        {
+          "hour": 0,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 1,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 2,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 3,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 4,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 5,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 6,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 7,
+          "transactionsCount": 6
+        },
+        {
+          "hour": 8,
+          "transactionsCount": 12
+        },
+        {
+          "hour": 9,
+          "transactionsCount": 30
+        },
+        {
+          "hour": 10,
+          "transactionsCount": 10
+        },
+        {
+          "hour": 11,
+          "transactionsCount": 32
+        },
+        {
+          "hour": 12,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 13,
+          "transactionsCount": 20
+        },
+        {
+          "hour": 14,
+          "transactionsCount": 40
+        },
+        {
+          "hour": 15,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 16,
+          "transactionsCount": 232
+        },
+        {
+          "hour": 17,
+          "transactionsCount": 18
+        },
+        {
+          "hour": 18,
+          "transactionsCount": 2
+        },
+        {
+          "hour": 19,
+          "transactionsCount": 34
+        },
+        {
+          "hour": 20,
+          "transactionsCount": 54
+        },
+        {
+          "hour": 21,
+          "transactionsCount": 16
+        },
+        {
+          "hour": 22,
+          "transactionsCount": 3
+        },
+        {
+          "hour": 23,
+          "transactionsCount": 1
+        }
+      ],
+      "state": "OPENED",
+      "malfunction": "NONE",
+      "statDate": "20-04-2019 05:00:00",
+      "avgTransactionsInDay": 156,
+      "dateToCurrencyEnd": 16,
+      "incidentExists": false,
+      "lastCashOutHours": -404,
+      "lastCashInHours": -356
+    }
+  },
+  {
+    "model": "model A1 atm 2",
+    "address": "addr test atm 2",
+    "atmName": "ATM #2",
+    "extAtmId": "atm2",
+    "atmState": {
+      "encashment": {
+        "encashmentPlannedDate": "12-05-2019",
+        "lastEncashmentDate": "15-04-2019",
+        "encashmentSumm": 234324.5,
+        "express": true
+      },
+      "cashInCassette": {
+        "cassRemaining": 1238,
+        "cassUploaded": 6765,
+        "forthcomingDate": "08-05-2019"
+      },
+      "cashOutCassettes": [
+        {
+          "denomination": 100,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 978,
+            "currencyCode": "EUR",
+            "description": "EURO"
+          },
+          "cassNumber": 1,
+          "cassRemaining": 1200,
+          "cassUploaded": 2312,
+          "notesCount": 5,
+          "exhaustionDate": "16-05-2019",
+          "demandValue": 7
+        },
+        {
+          "denomination": 20,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 810,
+            "currencyCode": "RUR",
+            "description": "RUBLE"
+          },
+          "cassNumber": 4,
+          "cassRemaining": 12321,
+          "cassUploaded": 232,
+          "notesCount": 2,
+          "exhaustionDate": "09-05-2019",
+          "demandValue": 120
+        },
+        {
+          "denomination": 100,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 810,
+            "currencyCode": "RUR",
+            "description": "RUBLE"
+          },
+          "cassNumber": 2,
+          "cassRemaining": 1220,
+          "cassUploaded": 5665,
+          "notesCount": 7,
+          "exhaustionDate": "04-05-2019",
+          "demandValue": 120
+        },
+        {
+          "denomination": 10,
+          "isWorking": true,
+          "currency": {
+            "currencyId": 840,
+            "currencyCode": "USD",
+            "description": "USD"
+          },
+          "cassNumber": 3,
+          "cassRemaining": 663,
+          "cassUploaded": 1231,
+          "notesCount": 2,
+          "exhaustionDate": "16-06-2019",
+          "demandValue": 23
+        }
+      ],
+      "cashInRecyclingCassettes": [
+        {
+          "cassNumber": 1,
+          "cassRemaining": 675,
+          "cassUploaded": 6760
+        },
+        {
+          "cassNumber": 2,
+          "cassRemaining": 123,
+          "cassUploaded": 8998
+        }
+      ],
+      "transactionsByHourStatistics": [
+        {
+          "hour": 0,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 1,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 2,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 3,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 4,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 5,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 6,
+          "transactionsCount": 0
+        },
+        {
+          "hour": 7,
+          "transactionsCount": 6
+        },
+        {
+          "hour": 8,
+          "transactionsCount": 12
+        },
+        {
+          "hour": 9,
+          "transactionsCount": 30
+        },
+        {
+          "hour": 10,
+          "transactionsCount": 10
+        },
+        {
+          "hour": 11,
+          "transactionsCount": 32
+        },
+        {
+          "hour": 12,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 13,
+          "transactionsCount": 20
+        },
+        {
+          "hour": 14,
+          "transactionsCount": 40
+        },
+        {
+          "hour": 15,
+          "transactionsCount": 23
+        },
+        {
+          "hour": 16,
+          "transactionsCount": 232
+        },
+        {
+          "hour": 17,
+          "transactionsCount": 18
+        },
+        {
+          "hour": 18,
+          "transactionsCount": 2
+        },
+        {
+          "hour": 19,
+          "transactionsCount": 34
+        },
+        {
+          "hour": 20,
+          "transactionsCount": 54
+        },
+        {
+          "hour": 21,
+          "transactionsCount": 16
+        },
+        {
+          "hour": 22,
+          "transactionsCount": 3
+        },
+        {
+          "hour": 23,
+          "transactionsCount": 1
+        }
+      ],
+      "state": "OPENED",
+      "malfunction": "NONE",
+      "statDate": "20-04-2019 05:00:00",
+      "avgTransactionsInDay": 156,
+      "dateToCurrencyEnd": 16,
+      "incidentExists": false,
+      "lastCashOutHours": -404,
+      "lastCashInHours": -356
+    }
+  }
 ]
-}

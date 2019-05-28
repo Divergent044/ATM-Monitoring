@@ -2,10 +2,13 @@ import React, {PureComponent, Fragment} from 'react';
 import {Doughnut, Line} from "react-chartjs-2";
 
 import OptionButton from 'src-components/OptionButton';
-import Accumulator from 'src-components/Accumulator';
+import Accumulator from './components/Accumulator';
+import TableComponentHOC from './components/HOC/TableComponentHOC';
+import TableComponent from './components/TableComponent';
 import Tabs from 'src-components/Tabs';
 import Ctx from 'src-components/Ctx';
 
+import dataTest from '../../testData/monitoringTest.json';
 import data from '../../testData/monitoring.json';
 
 import classNames from 'classnames/bind';
@@ -91,6 +94,17 @@ class Monitoring extends PureComponent {
                     />
                     <div className={cx('table-wrap')}>
                         {activeTab === 1 && (
+                            <TableComponentHOC type="status" data={data}>
+                                <TableComponent/>
+                            </TableComponentHOC>
+                        )}
+
+                        {activeTab === 2 && (
+                            <TableComponentHOC type="balance" data={data}>
+                                <TableComponent/>
+                            </TableComponentHOC>
+                        )}
+                        {/*{activeTab === 1 && (
                             <table className={cx('table')}>
                                 <thead>
                                 <tr className={cx('head-row')}>
@@ -141,7 +155,7 @@ class Monitoring extends PureComponent {
                                 ))}
                                 </tbody>
                             </table>
-                        )}
+                        )}*/}
                     </div>
                 </div>
 

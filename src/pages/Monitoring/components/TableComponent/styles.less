@@ -1,0 +1,41 @@
+@import (reference) "../../../../defaultStyles.less";
+
+.table {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  border-collapse: collapse;
+  font: @simple-font;
+
+  & .row {
+
+    &:hover {
+      background: @lightGrey;
+      cursor: pointer;
+      transition: all .1s ease-in-out;
+    }
+
+    &.selected {
+      background: @lightBlue;
+      color: @blue;
+    }
+  }
+
+  & .cell {
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & .head-cell:extend(.table .cell) {
+    padding: 10px;
+    font-size: 21px;
+    color: @blue;
+    border-top: none;
+  }
+}

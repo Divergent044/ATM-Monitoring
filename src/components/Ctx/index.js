@@ -91,8 +91,8 @@ export default {
         monitoringBalanceTableTitle: [
             "№ АТМ", "Название","Cash-out", "Cas1 Cash","Cas1 Notes",
             "Cas2 Cash","Cas2 Notes","Cas3 Cash","Cas3 Notes","Cas4 Cash","Cas4 Notes",
-            "RUR", "USD","EUR", "Дней до отпуст.","Посл инк.", "Дата инкас.",
-            "Сумма инкас.", "Reject", "Статус"
+            "RUR", "USD","EUR", "Reject", "Дней до отпуст.","Посл инк.", "Дата инкас.",
+            "Сумма инкас.", "Статус"
         ],
         labels: {
             searchGroup: 'Группа ATM',
@@ -174,5 +174,11 @@ export default {
                 pointHitRadius: 10,
                 data: [10, 53, 70, 24, 100, 134]
             }],
+    },
+    tooltip: {
+        denomination: 'Номинал',
+        currency: 'Валюта',
+        notesRemaining: 'Оставшиеся купюры',
+        notesUpload: 'Загруженные купюры',
     }
 };

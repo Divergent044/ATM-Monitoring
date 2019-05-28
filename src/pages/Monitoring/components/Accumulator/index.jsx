@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Ctx from 'src-components/Ctx';
+
 import classNames from 'classnames/bind';
 import styles from './styles.less';
 const cx = classNames.bind(styles);
@@ -19,6 +21,12 @@ const Accumulator = ({ value }) => (
                 width: `${value}%`
             }}
         />
+        <Tooltip
+            denomination={100}
+            currency="EUR"
+            notesRemaining={1200}
+            notesUpload={2312}
+        />
     </div>
 );
 
@@ -31,3 +39,13 @@ Accumulator.propTypes = {
 };
 
 export default Accumulator;
+
+const Tooltip = (props) => (
+    <div className={cx('tooltip')}>
+        {Object.keys(props).map((param, index) => (
+            <span className={cx('parameter')} key={index}>
+                {`${Ctx.tooltip[param]}: ${props[param]}`}
+            </span>
+        ))}
+    </div>
+);
