@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Ctx from 'src-components/Ctx';
+import Tooltip from '../Tooltip';
 
 import classNames from 'classnames/bind';
 import styles from './styles.less';
@@ -13,39 +13,38 @@ const defineColor = value => {
     if (value < 30) return 'red';
 };
 
-const Accumulator = ({ value }) => (
-    <div className={cx('wrap', value < 30 && 'almostEmpty')}>
-        <div
-            className={cx('accumulator', defineColor(value) )}
-            style={{
-                width: `${value}%`
-            }}
-        />
-        <Tooltip
-            denomination={100}
-            currency="EUR"
-            notesRemaining={1200}
-            notesUpload={2312}
-        />
-    </div>
-);
+const Accumulator = ({
+    isWorking = true,
+    cassRemaining,
+    cassUploaded,
+    tooltip,
+}) => {
+    const value = cassUploaded / (cassUploaded + cassRemaining) * 100;
 
-Accumulator.defaultProps = {
-    value: 0
+    return (
+        <div className={cx('wrap', (!isWorking || value < 30) && 'almostEmpty')}>
+            <div
+                className={cx('accumulator', isWorking && defineColor(value))}
+                style={{
+                    width: `${value}%`
+                }}
+            />
+
+            {tooltip && (
+                <Tooltip
+                    className={cx('tooltip', tooltip.tooltipFor)}
+                    {...tooltip}
+                />
+            )}
+        </div>
+    );
 };
 
 Accumulator.propTypes = {
-    value: PropTypes.number
+    isWorking: PropTypes.bool,
+    cassRemaining: PropTypes.number,
+    cassUploaded: PropTypes.number,
+    tooltip: PropTypes.object,
 };
 
 export default Accumulator;
-
-const Tooltip = (props) => (
-    <div className={cx('tooltip')}>
-        {Object.keys(props).map((param, index) => (
-            <span className={cx('parameter')} key={index}>
-                {`${Ctx.tooltip[param]}: ${props[param]}`}
-            </span>
-        ))}
-    </div>
-);

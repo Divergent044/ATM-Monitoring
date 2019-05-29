@@ -2,24 +2,25 @@ import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
 
 import Ctx from 'src-components/Ctx';
+import { getDataForStatusTable, getDataForBalanceTable } from './utils';
 
-const TableComponentHOC = ({ children, type, data }) => {
+const TableComponentHOC = ({children, type, data}) => {
     if (type === 'status') {
         return cloneElement(children, {
             head: Ctx.monitoring.monitoringStatusTableTitle,
-            body: data.map(param => getDataForStatusTable({ ...param }))
+            body: data.map(param => getDataForStatusTable({...param}))
         });
     }
 
     return cloneElement(children, {
         head: Ctx.monitoring.monitoringBalanceTableTitle,
-        body: data.map(param => getDataForBalanceTable({ ...param }))
+        body: data.map(param => getDataForBalanceTable({...param}))
     });
 };
 
 TableComponentHOC.propTypes = {
     children: PropTypes.any,
-    type: PropTypes.oneOfType([
+    type: PropTypes.oneOf([
         'status', 'balance'
     ]),
     data: PropTypes.arrayOf(PropTypes.shape({
@@ -59,64 +60,3 @@ TableComponentHOC.propTypes = {
 };
 
 export default TableComponentHOC;
-
-
-const getDataForStatusTable = ({ model, address, atmName, extAtmId, atmState }) => ({
-        id: extAtmId,
-        model,
-        nameProp: {
-            name: atmName,
-            address,
-        },
-        atmStatus: atmState.state,
-        problem: atmState.malfunction,
-        cashOut: atmState.cashOutCassettes,
-        RUR: calculateCurrency('RUR', atmState.cashOutCassettes),
-        USD: calculateCurrency('USD', atmState.cashOutCassettes),
-        EUR: calculateCurrency('EUR', atmState.cashOutCassettes),
-        cashIn: atmState.cashInCassette,
-        reject: atmState.cashInRecyclingCassettes,
-        encashmentStatus: atmState.encashment.express,
-        lastDelivery: atmState.lastCashOutHours,
-        lastReception: atmState.lastCashInHours,
-        NUCInDay: atmState.avgTransactionsInDay,
-        NUCInHour: atmState.transactionsByHourStatistics,
-        incident: atmState.incidentExists ? '+' : '-',
-});
-
-const getDataForBalanceTable = ({ model, address, atmName, extAtmId, atmState }) => ({
-    id: extAtmId,
-    nameProp: {
-        name: atmName,
-        address,
-    },
-    cassCashNotes: getSumAndCountNotesArray(atmState.cashOutCassettes),
-    cashOut: atmState.cashOutCassettes,
-    RUR: calculateCurrency('RUR', atmState.cashOutCassettes),
-    USD: calculateCurrency('USD', atmState.cashOutCassettes),
-    EUR: calculateCurrency('EUR', atmState.cashOutCassettes),
-    reject: atmState.cashInRecyclingCassettes,
-    encashmentStatus: atmState.encashment.express,
-    daysBeforeEmpty: atmState.dateToCurrencyEnd,
-    lastEncashmentDate: atmState.encashment.lastEncashmentDate,
-    encashmentDate: atmState.encashment.encashmentPlannedDate,
-    encashmentSum: atmState.encashment.encashmentSum,
-});
-
-const calculateCurrency = (currencyType, cassettes) => {
-    return cassettes.reduce((sumCurrency, cassette) => {
-        if (cassette.currency.currencyCode === currencyType) {
-            return sumCurrency + (cassette.denomination * cassette.notesCount)
-        }
-
-        return sumCurrency;
-    }, 0);
-};
-
-const getSumAndCountNotesArray = (cassettes) => {
-    return cassettes.reduce((result, {cassUploaded, demandValue, currency, notesCount}) => {
-        result.push(`${cassUploaded * demandValue}${currency.currencyCode}`);
-        result.push(notesCount);
-        return result;
-    }, []);
-};

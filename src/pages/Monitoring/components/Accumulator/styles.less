@@ -17,8 +17,6 @@
   &:hover .tooltip {
     position: absolute;
     padding: 2px 4px;
-    left: -170px;
-    bottom: 10px;
     z-index: 3;
 
     display: flex;
@@ -28,6 +26,16 @@
     background-color: @blue;
     border-radius: 5px 5px 0 5px;
     border: 1px solid #808080;
+
+    &.cashOut {
+      left: -170px;
+      bottom: 10px;
+    }
+
+    &.cashIn {
+      left: -250px;
+      bottom: 15px;
+    }
   }
 }
 
@@ -51,12 +59,6 @@
 
 .tooltip {
   display: none;
-}
-
-.parameter {
-  white-space: nowrap;
-  font-size: 13px;
-  color: #fff;
 }
 
 @keyframes accumulator {

@@ -2,13 +2,11 @@ import React, {PureComponent, Fragment} from 'react';
 import {Doughnut, Line} from "react-chartjs-2";
 
 import OptionButton from 'src-components/OptionButton';
-import Accumulator from './components/Accumulator';
 import TableComponentHOC from './components/HOC/TableComponentHOC';
 import TableComponent from './components/TableComponent';
 import Tabs from 'src-components/Tabs';
 import Ctx from 'src-components/Ctx';
 
-import dataTest from '../../testData/monitoringTest.json';
 import data from '../../testData/monitoring.json';
 
 import classNames from 'classnames/bind';
@@ -36,8 +34,6 @@ class Monitoring extends PureComponent {
 
     render() {
         const { activeTab } = this.state;
-        const classNameForFirstTab = this.state.activeTab === 1 ? 'active' : '';
-        const classNameForSecondTab = this.state.activeTab === 2 ? 'active' : '';
 
         return (
             <Fragment>
@@ -50,7 +46,7 @@ class Monitoring extends PureComponent {
                             type="text"
                             id="input-group"
                             className={cx('text-input')}
-                            value="All groups"
+                            defaultValue="All groups"
                         />
                     </div>
                     <div className={cx('filter')}>
@@ -104,58 +100,6 @@ class Monitoring extends PureComponent {
                                 <TableComponent/>
                             </TableComponentHOC>
                         )}
-                        {/*{activeTab === 1 && (
-                            <table className={cx('table')}>
-                                <thead>
-                                <tr className={cx('head-row')}>
-                                    {Ctx.monitoring.monitoringStatusTableTitle.map((item, index) => (
-                                        <th className={cx('head-cell')} key={index}>
-                                            {item}
-                                        </th>
-                                    ))}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {data.status.map((row, indexRow) => (
-                                    <tr className={cx('row')} key={`row-${indexRow}`}>
-                                        {row.map((cell, index) => (
-                                            <td className={cx('cell')} key={`cell-${indexRow}-${index}`}>
-                                                {typeof cell === 'object'
-                                                    ? cell.map((value, id) => <Accumulator value={value} key={id} />)
-                                                    :  `${cell}`
-                                                }
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        )}
-
-                        {activeTab === 2 && (
-                            <table className={cx('table')}>
-                                <thead>
-                                <tr className={cx('head-row')}>
-                                    {Ctx.monitoring.monitoringBalanceTableTitle.map((item, index) => (
-                                        <th className={cx('head-cell')} key={index}>
-                                            {item}
-                                        </th>
-                                    ))}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {data.balance.map((row, indexRow) => (
-                                    <tr className={cx('row')} key={`row-${indexRow}`}>
-                                        {row.map((cell, index) => (
-                                            <td className={cx('cell')} key={`cell-${indexRow}-${index}`}>
-                                                {cell}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        )}*/}
                     </div>
                 </div>
 

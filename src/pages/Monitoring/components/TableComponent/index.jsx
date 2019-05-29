@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Accumulator from "../../index";
+import Accumulator from '../Accumulator';
 
 import classNames from 'classnames/bind';
 import styles from './styles.less';
@@ -50,7 +50,7 @@ const TableComponent = ({ head, body }) => (
                 {row.cashOut && (
                     <td className={cx('cell')}>
                         {row.cashOut.map((acc, index) => (
-                            <Accumulator key={index}/>
+                            <Accumulator key={index} {...acc} />
                         ))}
                     </td>
                 )}
@@ -69,6 +69,20 @@ const TableComponent = ({ head, body }) => (
                 </td>
                 <td className={cx('cell')}>
                     {row.EUR || '-'}
+                </td>
+
+                {row.cashIn && (
+                    <td className={cx('cell')}>
+                        <Accumulator {...row.cashIn} />
+                    </td>
+                )}
+
+                <td className={cx('cell')}>
+                    {row.reject.map((el, index) => (
+                        <p key={index}>
+                            {`Кассета № ${el.cassNumber}`}
+                        </p>
+                    ))}
                 </td>
             </tr>
         ))}

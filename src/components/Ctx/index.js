@@ -101,6 +101,9 @@ export default {
         },
         tabs: [
             'Статусы', 'Балансы'
+        ],
+        defaultCashNotesValues: [
+            '-', '-', '-', '-', '-', '-', '-', '-'
         ]
     },
     chartPie: {
@@ -176,9 +179,16 @@ export default {
             }],
     },
     tooltip: {
-        denomination: 'Номинал',
-        currency: 'Валюта',
-        notesRemaining: 'Оставшиеся купюры',
-        notesUpload: 'Загруженные купюры',
+        cashOut: {
+            denomination: 'Номинал',
+            currency: 'Валюта',
+            cassRemaining: 'Оставшиеся купюры',
+            cassUploaded: 'Загруженные купюры',
+        },
+        cashIn: {
+            forthcomingDate: 'Предполагаемая дата заполнения',
+            cassRemaining: 'Купюр может быть принято',
+            cassUploaded: 'Кол-во принятых купюр',
+        },
     }
 };
