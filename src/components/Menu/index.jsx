@@ -10,7 +10,7 @@ import styles from './style.less';
 
 const cx = classNames.bind(styles);
 
-const Menu = ({ onClick }) => (
+const Menu = ({ onClick, history }) => (
     <div className={cx('menu-content')}>
         <div className={cx('title')}>
             {Ctx.menu.menu}
@@ -47,7 +47,10 @@ const Menu = ({ onClick }) => (
         <OptionButton
             buttonText={Ctx.menu.exit}
             className={cx('menu-logout')}
-            clickAction={onClick}
+            clickAction={() => {
+                onClick();
+                history.push('/login');
+            }}
         />
     </div>
 );

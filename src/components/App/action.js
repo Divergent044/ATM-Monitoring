@@ -21,8 +21,6 @@ export const loginAction = encodedData => dispatch => {
                 authResult: 'success',
             }
         });
-
-        return true;
     }).catch(() => {
         dispatch({
             type: 'AUTH_ERROR',
@@ -31,8 +29,6 @@ export const loginAction = encodedData => dispatch => {
                 authResult: 'error',
             }
         });
-
-        return false;
     })
 };
 

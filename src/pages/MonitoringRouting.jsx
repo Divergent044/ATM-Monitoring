@@ -9,7 +9,7 @@ import Monitoring from "./Monitoring";
 
 const MonitoringRouting = ({ callback }) => (
     <Fragment>
-        <Menu onClick={callback} />
+        <Route render={(props) => <Menu onClick={callback} {...props} />} />
         <div style={{ width: 'calc(100% - 200px)' }}>
             <Switch>
                 <Route exact path='/atm/monitoring' component={Monitoring}/>

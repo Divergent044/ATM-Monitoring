@@ -20,7 +20,7 @@ class Auth extends Component {
 
     componentDidUpdate(prevProps) {
         const { isAuthenticated, authResult, history } = this.props;
-        if (prevProps.isAuthenticated !== isAuthenticated &&
+        if (prevProps.isAuthenticated !== isAuthenticated ||
             prevProps.authResult !== authResult
         ) {
             if (authResult === 'success' && isAuthenticated) {

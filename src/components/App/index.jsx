@@ -15,14 +15,14 @@ const App = ({ isAuthenticated, logoutCallback }) => (
         <Header/>
         <div className={cx('wrapper')}>
             <Switch>
-                <Redirect to={isAuthenticated ? '/atm/monitoring' : '/login'} />
+                <Redirect push to={isAuthenticated ? '/atm/monitoring' : '/login'} />
                 <Route
                     path='/login'
                     render={(props) => <Auth {...props} />}
                 />
                 <Route
                     path="/atm/monitoring"
-                    render={() => <MonitoringRouting callback={logoutCallback}/>}
+                    render={(props) => <MonitoringRouting callback={logoutCallback} {...props} />}
                 />
 
             </Switch>
