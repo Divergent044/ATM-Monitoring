@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import Accumulator from '../Accumulator';
 
+import complete from '../../../../assets/img/complete.svg';
+import watch from '../../../../assets/img/watch.svg';
+
 import classNames from 'classnames/bind';
 import styles from './styles.less';
 const cx = classNames.bind(styles);
@@ -84,6 +87,66 @@ const TableComponent = ({ head, body }) => (
                         </p>
                     ))}
                 </td>
+                <td className={cx('cell')}>
+                    {row.encashmentStatus
+                        ? <img src={watch} className={cx('icon')} alt="Express Encashment"/>
+                        : <img src={complete} className={cx('icon')} alt="Encashment assigned"/>
+                    }
+                </td>
+
+                {row.lastDelivery && (
+                    <td className={cx('cell')}>
+                        {row.lastDelivery}
+                    </td>
+                )}
+
+                {row.lastReception && (
+                    <td className={cx('cell')}>
+                        {row.lastReception}
+                    </td>
+                )}
+
+                {row.NUCInDay && (
+                    <td className={cx('cell')}>
+                        {row.NUCInDay}
+                    </td>
+                )}
+
+                {row.NUCInHour && (
+                    <td className={cx('cell')}>
+                        {row.NUCInHour[12].transactionsCount}
+                    </td>
+                )}
+
+                {row.incident && (
+                    <td className={cx('cell')}>
+                        {row.incident}
+                    </td>
+                )}
+
+                {row.daysBeforeEmpty && (
+                    <td className={cx('cell')}>
+                        {row.daysBeforeEmpty}
+                    </td>
+                )}
+
+                {row.lastEncashmentDate && (
+                    <td className={cx('cell')}>
+                        {row.lastEncashmentDate}
+                    </td>
+                )}
+
+                {row.encashmentDate && (
+                    <td className={cx('cell')}>
+                        {row.encashmentDate}
+                    </td>
+                )}
+
+                {row.encashmentSum && (
+                    <td className={cx('cell')}>
+                        {row.encashmentSum}
+                    </td>
+                )}
             </tr>
         ))}
         </tbody>

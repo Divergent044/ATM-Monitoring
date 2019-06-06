@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import {Link} from 'react-router-dom';
 import Ctx from 'src-components/Ctx';
+import { loginAction } from '../../components/App/action';
+import { pathOr } from 'ramda';
 
 import classNames from 'classnames/bind';
 import styles from './style.less';
@@ -14,8 +16,24 @@ class Auth extends Component {
         login: "",
         password: "",
         checkLogin: true,
-        nextUrl: "",
     };
+
+    componentDidUpdate(prevProps) {
+        const { isAuthenticated, authResult, history } = this.props;
+        if (prevProps.isAuthenticated !== isAuthenticated &&
+            prevProps.authResult !== authResult
+        ) {
+            if (authResult === 'success' && isAuthenticated) {
+                history.push('/atm/monitoring');
+            }
+
+            if (authResult === 'error' && !isAuthenticated) {
+                this.setState({
+                    checkLogin: false
+                });
+            }
+        }
+    }
 
     updateLogin = (e) => {
         this.setState({
@@ -30,42 +48,25 @@ class Auth extends Component {
     };
 
     auth = () => {
+        const { login, password } = this.state;
+
         this.setState({
             checkLogin: true
         });
 
-        const {username, password} = this.state;
-        const encodedData = btoa(username + ':' + password);
-        axios({
-            method: 'POST',
-            url: 'http://localhost:8443/oauth/token?grant_type=client_credentials',
-            withCredentials: 'true',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + encodedData
-            }
-        }).then(() => {
+        try {
+            const encodedData = btoa(login + ':' + password);
+            this.props.onSubmit(encodedData);
+        } catch (e) {
             this.setState({
-                nextUrl: 'atm/monitoring'
+                checkLogin: false
             });
-        }).catch(error => {
-            if (error.response) {
-                if (error.response.status === 401) {
-                    this.setState({
-                        checkLogin: false
-                    });
-                } else {
-                    this.setState({
-                        checkLogin: true
-                    });
-                }
-            }
-        });
+        }
     };
 
 
     render() {
-        const {login, password, checkLogin, nextUrl} = this.state;
+        const {login, password, checkLogin} = this.state;
 
         return (
             <div className={cx('auth')}>
@@ -96,23 +97,36 @@ class Auth extends Component {
                         onChange={this.updatePassword}
                     />
 
-                    {!checkLogin && (
-                        <span className={cx('auth-form__error')}>
-                                {Ctx.auth.error}
-                        </span>
-                    )}
-                    <Link to={`/${nextUrl}`}>
-                        <input
-                            type="button"
-                            onClick={this.auth}
-                            value="Enter"
-                            className={cx('auth-form-enter__button')}
-                        />
-                    </Link>
+                    <span className={cx('auth-form__error', checkLogin ? 'hidden' : 'visible')}>
+                         {Ctx.auth.error}
+                    </span>
+
+                    <input
+                        type="button"
+                        onClick={this.auth}
+                        value="Enter"
+                        className={cx('auth-form-enter__button')}
+                    />
                 </form>
             </div>
         );
     }
 }
 
-export default Auth;
+Auth.propTypes = {
+    history: PropTypes.object,
+    authResult: PropTypes.string,
+    onSubmit: PropTypes.func,
+    isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = state => ({
+    authResult: pathOr('', ['appReducer', 'authorization', 'authResult'], state),
+    isAuthenticated: pathOr(false, ['appReducer', 'authorization', 'isAuthenticated'], state)
+});
+
+const mapDispatchToProps = dispatch => ({
+    onSubmit: encodedData => dispatch(loginAction(encodedData))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

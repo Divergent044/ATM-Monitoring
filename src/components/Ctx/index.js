@@ -1,4 +1,5 @@
 export default {
+    cookieName: 'CSCM-Auth',
     headerTitle: 'ATM Cash Management',
     menu: {
         menu: 'Меню',
@@ -84,15 +85,14 @@ export default {
     },
     monitoring: {
         monitoringStatusTableTitle:[
-            "№ АТМ", "Модель","Название", "Статус","Проблемы", "Cash-out",
-            "RUR", "USD","EUR", "Cash-in","Reject", "Статус",
+            "№ АТМ", "Модель","Название", "Статус ATM","Проблемы", "Cash-out",
+            "RUR", "USD","EUR", "Cash-in","Reject", "Статус инкас.",
             "Посл. выдача", "Посл. прием","НКС", "НКЧ","Инциденты"
         ],
         monitoringBalanceTableTitle: [
             "№ АТМ", "Название","Cash-out", "Cas1 Cash","Cas1 Notes",
             "Cas2 Cash","Cas2 Notes","Cas3 Cash","Cas3 Notes","Cas4 Cash","Cas4 Notes",
-            "RUR", "USD","EUR", "Reject", "Дней до отпуст.","Посл инк.", "Дата инкас.",
-            "Сумма инкас.", "Статус"
+            "RUR", "USD","EUR", "Reject", "Статус инкас.", "Дней до отпуст.","Посл инк.", "Дата инкас.", "Сумма инкас."
         ],
         labels: {
             searchGroup: 'Группа ATM',

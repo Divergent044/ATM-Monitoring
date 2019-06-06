@@ -112,10 +112,17 @@
 
   color: #cc0000;
   font: @simple-font;
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &.visible {
+    visibility: visible;
+  }
 }
 
 .auth-form-enter__button {
-  margin-top: 15px;
   position: relative;
   right: -195px;
   padding: 0 18px;
@@ -141,11 +148,11 @@
   background-image: linear-gradient(to bottom, #edf5f8, #cde5ef);
   -webkit-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
-}
 
-.auth-form-enter__button:active {
-  background: #cde5ef;
-  border-color: #9eb9c2 #b3c0c8 #b4ccce;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  &:active {
+    background: #cde5ef;
+    border-color: #9eb9c2 #b3c0c8 #b4ccce;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  }
 }

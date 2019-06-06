@@ -18,7 +18,7 @@ const env = getClientEnvironment(publicUrl);
 
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   entry: [
     require.resolve('./polyfills'),
     require.resolve('react-dev-utils/webpackHotDevClient'),
@@ -38,8 +38,8 @@ module.exports = {
     ),
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      'react-native': 'react-native-web',
       'src-components': path.resolve(__dirname, '../src/components'),
+      'utils': path.resolve(__dirname, '../src/utils'),
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),

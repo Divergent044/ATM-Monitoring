@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Link} from 'react-router-dom';
 import OptionButton from '../OptionButton';
@@ -9,7 +10,7 @@ import styles from './style.less';
 
 const cx = classNames.bind(styles);
 
-const Menu = () => (
+const Menu = ({ onClick }) => (
     <div className={cx('menu-content')}>
         <div className={cx('title')}>
             {Ctx.menu.menu}
@@ -43,8 +44,16 @@ const Menu = () => (
             </Link>
         </div>
 
-        <OptionButton buttonText={Ctx.menu.exit} className={cx('menu-logout')}/>
+        <OptionButton
+            buttonText={Ctx.menu.exit}
+            className={cx('menu-logout')}
+            clickAction={onClick}
+        />
     </div>
 );
+
+Menu.propTypes = {
+    onClick: PropTypes.func,
+};
 
 export default Menu;

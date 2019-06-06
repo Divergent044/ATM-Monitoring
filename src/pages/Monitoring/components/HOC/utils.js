@@ -69,7 +69,7 @@ export const getDataForBalanceTable = ({model, address, atmName, extAtmId, atmSt
     daysBeforeEmpty: atmState.dateToCurrencyEnd,
     lastEncashmentDate: atmState.encashment.lastEncashmentDate,
     encashmentDate: atmState.encashment.encashmentPlannedDate,
-    encashmentSum: atmState.encashment.encashmentSum,
+    encashmentSum: atmState.encashment.encashmentSumm,
 });
 
 const calculateCurrency = (currencyType, cassettes) => {

@@ -1,20 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { devToolsEnhancer } from "redux-devtools-extension";
-import rootReducer from "./reducer";
+import { createStore, applyMiddleware } from "redux";
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import App from './App';
-
+import { BrowserRouter } from 'react-router-dom';
+import rootReducer from "./rootReducer";
+import App from './components/App';
+import AppHOC from './components/App/AppHOC';
 import './defaultStyles.less';
 
-const store = createStore(rootReducer, devToolsEnhancer());
+const composeEnhancers = composeWithDevTools({});
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <AppHOC>
+                <App />
+            </AppHOC>
         </BrowserRouter>
     </Provider>, document.getElementById('root')
 );
