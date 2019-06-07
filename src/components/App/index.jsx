@@ -15,7 +15,6 @@ const App = ({ isAuthenticated, logoutCallback }) => (
         <Header/>
         <div className={cx('wrapper')}>
             <Switch>
-                <Redirect push to={isAuthenticated ? '/atm/monitoring' : '/login'} />
                 <Route
                     path='/login'
                     render={(props) => <Auth {...props} />}
@@ -24,8 +23,8 @@ const App = ({ isAuthenticated, logoutCallback }) => (
                     path="/atm/monitoring"
                     render={(props) => <MonitoringRouting callback={logoutCallback} {...props} />}
                 />
-
             </Switch>
+            <Redirect push to={isAuthenticated ? '/atm/monitoring' : '/login'} />
         </div>
     </Fragment>
 );
